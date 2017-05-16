@@ -1,0 +1,514 @@
+
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="icon" href="icon.jpg">
+  <title>Quiz Otaku Feud</title>
+  <script>
+      var descriptions =
+      [["Flow","Back-on","Angela","Mika Kobayashi","Aimee Blackschleger","IA Vocaloid"],
+      ["Your Name","Full Metal Alchemist:Brotherhood","Gintama","Steins;Gate","HunterXHunter","Ginga Eiyuu Densetsu","Haikyuu","Clannad:After Story","A Silent Voice","Code Geass"],
+      ["Game Of Thrones","Breaking Bad","The Walking Dead","The Big Bang Theory","Sherlock","Dexter","Friends","How I Met Your Mother","House Of Cards","Dr House"],
+      ["Jon Snow","Bronn","Arya Stark","Tyrion Lannister","Sandor Clegane-The Hound","Ned Stark","Jaimee Lannister","Daenerys Targaryen","Peter Baelish-Littlefinger"],
+      ["Spirited Away","Howl's Moving Castle","Ponyo","Stand By Me Doraemon","Your Name","Pokémon The First Movie","Princess Mononoke","The Secret World Of Arietty","The Wind Rises","Pokémon 2000"],
+      ["Kazu","Saint Sushi-Bar","Imadake","Kinka Izakaya","Yakato Yokabai","Biiru","Saiko Bistrot Izakaya","Izakaya Kabocha","Marusan","Japote"],
+      ["Avatar","Titanic","Star Wars:The Force Awakens","Jurassic World","Avengers","Fast&Furious 7","Avengers:Age Of Ultron","Harry Potter and the Deadly Hallows","Frozen","Iron Man 3"],
+      ["Death Note","Shingeki No Kyojin","Sword Art Online","Full Metal Alchemist:Brotherhood","Angel Beats!","Code Geass","Naruto","Steins;Gate","Mirai Nikki","Toradora"],
+      ["Italia","Brazil","Japan","Indonesia","France","Russia","Mexico","USA","China","Thailand","Spain","Denmark","Singapore"],
+      ["One Piece","Assassination Classroom","Shingeki No Kyojin","Haikyuu","Kingdom","Nanatsu No Taizai","One Punch Man","Erased","Tokyo Ghoul:re","Boku no Hero academia"]];
+      var colorPoints = "white";
+      function image(imgName,idSelect,points)
+      {
+        //document.getElementById("img" + idSelect).style.display = 'none';
+          var indexDescription = idSelect.split("_");
+          var i = parseInt(indexDescription[0])-1;
+          var j = parseInt(indexDescription[1])-1;
+          var k = indexDescription[0];
+          var string1 = document.getElementById("img" + idSelect).src;
+          var string1= string1.split('/').pop();
+          var string2 = 'image' + idSelect + '.png';
+          if ((string1).localeCompare(string2) == 0)
+          {
+            document.getElementById("img" + idSelect).title = "";
+            document.getElementById("img" + idSelect).src = 'image' + k + '.png';
+            document.getElementById(colorPoints + "Points").textContent = Number(document.getElementById(colorPoints + "Points").textContent) - points;
+          }
+          else
+          {
+            document.getElementById("img" + idSelect).title = descriptions[i][j];
+            document.getElementById("img" + idSelect).src = 'image' + idSelect + '.png';
+            document.getElementById(colorPoints + "Points").textContent = Number(document.getElementById(colorPoints + "Points").textContent) + points;
+          }
+      }
+    </script>
+</head>
+  <body>
+
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a class="unselectable" class="redbtn" onclick="redButton()"><font color="FF0000">Red </font> : <var id="redPoints">0</var></a>
+  <a class="unselectable" class="bluebtn" onclick="blueButton()"><font color="0000FF">Blue</font> : <var id="bluePoints">0</var></a>
+  <a class="unselectable" class="whitebtn" onclick="whiteButton()"><font color="FFFFFF">White</font></a>
+  <a class="unselectable" class="clearbtn" onclick="clearButton()"><font color="AA00AA">Clear</font></a>
+  <img src="imagewhite.png" id="imgColor" name="imageColor"/>
+</div>
+
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.display = "block";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.display = "none";
+}
+function redButton() {
+    colorPoints = "red";
+    document.getElementById("imgColor").src = 'image' + colorPoints + '.png';
+}
+function blueButton() {
+    colorPoints = "blue";
+    document.getElementById("imgColor").src = 'image' + colorPoints + '.png';
+}
+function whiteButton() {
+    colorPoints = "white";
+    document.getElementById("imgColor").src = 'image' + colorPoints + '.png';
+}
+function clearButton() {
+    document.getElementById("redPoints").textContent = 0;
+    document.getElementById("bluePoints").textContent = 0;
+    colorPoints = "white";
+    document.getElementById("imgColor").src = 'image' + colorPoints + '.png';
+    // location.reload();
+}
+function reveal(question) {
+  if(document.getElementById(question).style.display == 'block')
+  {
+    document.getElementById(question).style.display = 'none';
+  }
+  else
+  {
+    document.getElementById(question).style.display = 'block';
+  }
+
+}
+</script>
+
+<h1> Quiz Otaku Feud</h1>
+
+    <img src="image00.jpg" class="intro" id="img00" name="image00" onclick="image('image00','00')"/>
+
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<button id="buttonReveal" onclick="reveal('q1')" > Q01 </button>
+<h1 class="question" id="q1"> Quiz #1 : Parmi les invités musicaux de l'Otakuthon et du Nadeshicon qui sont venus dans les années 2014 à aujourd'hui, qui est le plus populaire?<br />
+Quiz #1 : Which musical guests from Otakuthon and Nadeshicon 2014 to present is the most popular?</h1>
+    <table id="tableau">
+      <tr>
+        <td>
+          <img src="image01.png" id="img01_01" name="image01" onclick="image('image01','01_01',35)"/>
+        </td>
+        <td>
+          <img src="image01.png" id="img01_02" name="image01" onclick="image('image01','01_02',25)"/>
+        </td>
+        <td>
+          <img src="image01.png" id="img01_03" name="image01" onclick="image('image01','01_03',15)"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <img src="image01.png" id="img01_04" name="image01" onclick="image('image01','01_04',10)"/>
+        </td>
+        <td>
+          <img src="image01.png" id="img01_05" name="image01" onclick="image('image01','01_05',8)"/>
+        </td>
+        <td>
+          <img src="image01.png" id="img01_06" name="image01" onclick="image('image01','01_06',7)"/>
+        </td>
+      </tr>
+    </table>
+
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<button id="buttonReveal" onclick="reveal('q2')" > Q02 </button>
+<h1 class="question" id="q2"> Quiz #2 : Quels sont les meilleurs animes selon MyAnimeList ? <br />
+Quiz #2 : What are the best animes according to MyAnimeList ?</h1>
+    <table id="tableau">
+      <tr>
+        <td>
+          <img src="image02.png" id="img02_01" name="image02" onclick="image('image02','02_01',25)"/>
+        </td>
+        <td>
+          <img src="image02.png" id="img02_02" name="image02" onclick="image('image02','02_02',17)"/>
+        </td>
+        <td>
+          <img src="image02.png" id="img02_03" name="image02" onclick="image('image02','02_03',16)"/>
+        </td>
+        <td>
+          <img src="image02.png" id="img02_04" name="image02" onclick="image('image02','02_04',11)"/>
+        </td>
+        <td>
+          <img src="image02.png" id="img02_05" name="image02" onclick="image('image02','02_05',8)"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <img src="image02.png" id="img02_06" name="image02" onclick="image('image02','02_06',7)"/>
+        </td>
+        <td>
+          <img src="image02.png" id="img02_07" name="image02" onclick="image('image02','02_07',6)"/>
+        </td>
+        <td>
+          <img src="image02.png" id="img02_08" name="image02" onclick="image('image02','02_08',4)"/>
+        </td>
+        <td>
+          <img src="image02.png" id="img02_09" name="image02" onclick="image('image02','02_09',4)"/>
+        </td>
+        <td>
+          <img src="image02.png" id="img02_10" name="image02" onclick="image('image02','02_10',2)"/>
+        </td>
+      </tr>
+    </table>
+
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<button id="buttonReveal" onclick="reveal('q3')" > Q03 </button>
+<h1 class="question" id="q3"> Quiz #3 : Quels sont les séries télévisés les plus populaires selon IMDb ?<br />
+Quiz #3 : What are the most popular TV shows according to IMDb? </h1>
+    <table id="tableau">
+      <tr>
+        <td>
+          <img src="image03.png" id="img03_01" name="image03" onclick="image('image03','03_01',19)"/>
+        </td>
+        <td>
+          <img src="image03.png" id="img03_02" name="image03" onclick="image('image03','03_02',16)"/>
+        </td>
+        <td>
+          <img src="image03.png" id="img03_03" name="image03" onclick="image('image03','03_03',12)"/>
+        </td>
+        <td>
+          <img src="image03.png" id="img03_04" name="image03" onclick="image('image03','03_04',10)"/>
+        </td>
+        <td>
+          <img src="image03.png" id="img03_05" name="image03" onclick="image('image03','03_05',8)"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <img src="image03.png" id="img03_06" name="image03" onclick="image('image03','03_06',8)"/>
+        </td>
+        <td>
+          <img src="image03.png" id="img03_07" name="image03" onclick="image('image03','03_07',8)"/>
+        </td>
+        <td>
+          <img src="image03.png" id="img03_08" name="image03" onclick="image('image03','03_08',7)"/>
+        </td>
+        <td>
+          <img src="image03.png" id="img03_09" name="image03" onclick="image('image03','03_09',6)"/>
+        </td>
+        <td>
+          <img src="image03.png" id="img03_10" name="image03" onclick="image('image03','03_10',6)"/>
+        </td>
+      </tr>
+    </table>
+
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<button id="buttonReveal" onclick="reveal('q4')" > Q04 </button>
+<h1 class="question" id="q4"> Quiz #4 : Quels sont les personnages favoris de Game of Thrones? (Selon un petit sondage sur Reddit /r/GoT) ?<br />
+Quiz #4 : What are the favorite characters from Game of Thrones? (according to a small poll from Reddit /r/GoT)</h1>
+    <table id="tableau">
+      <tr>
+        <td>
+          <img src="image04.png" id="img04_01" name="image04" onclick="image('image04','04_01',28)"/>
+        </td>
+        <td>
+          <img src="image04.png" id="img04_02" name="image04" onclick="image('image04','04_02',14)"/>
+        </td>
+        <td>
+          <img src="image04.png" id="img04_03" name="image04" onclick="image('image04','04_03',13)"/>
+        </td>
+        <td>
+          <img src="image04.png" id="img04_04" name="image04" onclick="image('image04','04_04',12)"/>
+        </td>
+        <td>
+          <img src="image04.png" id="img04_05" name="image04" onclick="image('image04','04_05',9)"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <img src="image04.png" id="img04_06" name="image04" onclick="image('image04','04_06',7)"/>
+        </td>
+        <td>
+          <img src="image04.png" id="img04_07" name="image04" onclick="image('image04','04_07',5)"/>
+        </td>
+        <td>
+          <img src="image04.png" id="img04_08" name="image04" onclick="image('image04','04_08',4)"/>
+        </td>
+        <td>
+          <img src="image04.png" id="img04_09" name="image04" onclick="image('image04','04_09',4)"/>
+        </td>
+        <td>
+          <img src="image04.png" id="img04_10" name="image04" onclick="image('image04','04_10',4)"/>
+        </td>
+      </tr>
+    </table>
+
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+  <button id="buttonReveal" onclick="reveal('q5')" > Q05 </button>
+  <h1 class="question" id="q5"> Quiz #5 : Quels sont les Anime Films qui ont généré le plus de revenu ?<br />
+Quiz #5 : What anime films gathered the most income?</h1>
+    <table id="tableau">
+      <tr>
+        <td>
+          <img src="image05.png" id="img05_01" name="image05" onclick="image('image05','05_01',16)"/>
+        </td>
+        <td>
+          <img src="image05.png" id="img05_02" name="image05" onclick="image('image05','05_02',13)"/>
+        </td>
+        <td>
+          <img src="image05.png" id="img05_03" name="image05" onclick="image('image05','05_03',11)"/>
+        </td>
+        <td>
+          <img src="image05.png" id="img05_04" name="image05" onclick="image('image05','05_04',11)"/>
+        </td>
+        <td>
+          <img src="image05.png" id="img05_05" name="image05" onclick="image('image05','05_05',9)"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <img src="image05.png" id="img05_06" name="image05" onclick="image('image05','05_06',9)"/>
+        </td>
+        <td>
+          <img src="image05.png" id="img05_07" name="image05" onclick="image('image05','05_07',9)"/>
+        </td>
+        <td>
+          <img src="image05.png" id="img05_08" name="image05" onclick="image('image05','05_08',8)"/>
+        </td>
+        <td>
+          <img src="image05.png" id="img05_09" name="image05" onclick="image('image05','05_09',7)"/>
+        </td>
+        <td>
+          <img src="image05.png" id="img05_10" name="image05" onclick="image('image05','05_10',7)"/>
+        </td>
+      </tr>
+    </table>
+
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+  <button id="buttonReveal" onclick="reveal('q6')" > Q06 </button>
+  <h1 class="question" id="q6"> Quiz #6 : Quels sont les Meileurs Restaurants/Bar/Izakaya Japonais à Montréal ?<br />
+Quiz #6 : What are the best japanese restaurants/bar/izakayas in Montreal?</h1>
+    <table id="tableau">
+      <tr>
+        <td>
+          <img src="image06.png" id="img06_01" name="image06" onclick="image('image06','06_01',36)"/>
+        </td>
+        <td>
+          <img src="image06.png" id="img06_02" name="image06" onclick="image('image06','06_02',17)"/>
+        </td>
+        <td>
+          <img src="image06.png" id="img06_03" name="image06" onclick="image('image06','06_03',13)"/>
+        </td>
+        <td>
+          <img src="image06.png" id="img06_04" name="image06" onclick="image('image06','06_04',10)"/>
+        </td>
+        <td>
+          <img src="image06.png" id="img06_05" name="image06" onclick="image('image06','06_05',10)"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <img src="image06.png" id="img06_06" name="image06" onclick="image('image06','06_06',5)"/>
+        </td>
+        <td>
+          <img src="image06.png" id="img06_07" name="image06" onclick="image('image06','06_07',4)"/>
+        </td>
+        <td>
+          <img src="image06.png" id="img06_08" name="image06" onclick="image('image06','06_08',2)"/>
+        </td>
+        <td>
+          <img src="image06.png" id="img06_09" name="image06" onclick="image('image06','06_09',2)"/>
+        </td>
+        <td>
+          <img src="image06.png" id="img06_10" name="image06" onclick="image('image06','06_10',1)"/>
+        </td>
+      </tr>
+    </table>
+
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+  <button id="buttonReveal" onclick="reveal('q7')" > Q07 </button>
+  <h1 class="question" id="q7"> Quiz #7 : Quels sont les Films qui ont généré le plus de revenu (Hollywood) ?<br />
+Quiz #7 : What  Hollywood films gathered the most income?</h1>
+    <table id="tableau">
+      <tr>
+        <td>
+          <img src="image07.png" id="img07_01" name="image07" onclick="image('image07','07_01',16)"/>
+        </td>
+        <td>
+          <img src="image07.png" id="img07_02" name="image07" onclick="image('image07','07_02',13)"/>
+        </td>
+        <td>
+          <img src="image07.png" id="img07_03" name="image07" onclick="image('image07','07_03',12)"/>
+        </td>
+        <td>
+          <img src="image07.png" id="img07_04" name="image07" onclick="image('image07','07_04',10)"/>
+        </td>
+        <td>
+          <img src="image07.png" id="img07_05" name="image07" onclick="image('image07','07_05',9)"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <img src="image07.png" id="img07_06" name="image07" onclick="image('image07','07_06',9)"/>
+        </td>
+        <td>
+          <img src="image07.png" id="img07_07" name="image07" onclick="image('image07','07_07',8)"/>
+        </td>
+        <td>
+          <img src="image07.png" id="img07_08" name="image07" onclick="image('image07','07_08',8)"/>
+        </td>
+        <td>
+          <img src="image07.png" id="img07_09" name="image07" onclick="image('image07','07_09',8)"/>
+        </td>
+        <td>
+          <img src="image07.png" id="img07_10" name="image07" onclick="image('image07','07_10',7)"/>
+        </td>
+      </tr>
+    </table>
+
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+  <button id="buttonReveal" onclick="reveal('q8')" > Q08 </button>
+  <h1 class="question" id="q8"> Quiz #8 : Quels sont les animes les plus populaires selon MyAnimeList ?<br />
+Quiz #8 : What anime are the most popular according to MyAnimeList?</h1>
+    <table id="tableau">
+      <tr>
+        <td>
+          <img src="image08.png" id="img08_01" name="image08" onclick="image('image08','08_01',18)"/>
+        </td>
+        <td>
+          <img src="image08.png" id="img08_02" name="image08" onclick="image('image08','08_02',16)"/>
+        </td>
+        <td>
+          <img src="image08.png" id="img08_03" name="image08" onclick="image('image08','08_03',15)"/>
+        </td>
+        <td>
+          <img src="image08.png" id="img08_04" name="image08" onclick="image('image08','08_04',12)"/>
+        </td>
+        <td>
+          <img src="image08.png" id="img08_05" name="image08" onclick="image('image08','08_05',10)"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <img src="image08.png" id="img08_06" name="image08" onclick="image('image08','08_06',8)"/>
+        </td>
+        <td>
+          <img src="image08.png" id="img08_07" name="image08" onclick="image('image08','08_07',7)"/>
+        </td>
+        <td>
+          <img src="image08.png" id="img08_08" name="image08" onclick="image('image08','08_08',6)"/>
+        </td>
+        <td>
+          <img src="image08.png" id="img08_09" name="image08" onclick="image('image08','08_09',5)"/>
+        </td>
+        <td>
+          <img src="image08.png" id="img08_10" name="image08" onclick="image('image08','08_10',3)"/>
+        </td>
+      </tr>
+    </table>
+
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+    <button id="buttonReveal" onclick="reveal('q9')" > Q09 </button>
+    <h1 class="question" id="q9"> Quiz #9 : Quels pays ont remporté le plus de médailles dans l'histoire du World Cosplay Summit ? <br />
+Quiz #9 : Which country earned the most medals in the history of World Cosplay Summit?</h1>
+    <table id="tableau">
+      <tr>
+        <td>
+          <img src="image09.png" id="img09_01" name="image09" onclick="image('image09','09_01',22)"/>
+        </td>
+        <td>
+          <img src="image09.png" id="img09_02" name="image09" onclick="image('image09','09_02',16)"/>
+        </td>
+        <td>
+          <img src="image09.png" id="img09_03" name="image09" onclick="image('image09','09_03',14)"/>
+        </td>
+        <td>
+          <img src="image09.png" id="img09_04" name="image09" onclick="image('image09','09_04',8)"/>
+        </td>
+        <td>
+          <img src="image09.png" id="img09_05" name="image09" onclick="image('image09','09_05',6)"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <img src="image09.png" id="img09_06" name="image09" onclick="image('image09','09_06',5)"/>
+        </td>
+        <td>
+          <img src="image09.png" id="img09_07" name="image09" onclick="image('image09','09_07',5)"/>
+        </td>
+        <td>
+          <img src="image09.png" id="img09_08" name="image09" onclick="image('image09','09_08',5)"/>
+        </td>
+        <td>
+          <img src="image09.png" id="img09_09" name="image09" onclick="image('image09','09_09',5)"/>
+        </td>
+        <td>
+          <img src="image09.png" id="img09_10" name="image09" onclick="image('image09','09_10',5)"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <img src="image09.png" id="img09_11" name="image09" onclick="image('image09','09_11',3)"/>
+        </td>
+        <td>
+          <img src="image09.png" id="img09_12" name="image09" onclick="image('image09','09_12',3)"/>
+        </td>
+        <td>
+          <img src="image09.png" id="img09_13" name="image09" onclick="image('image09','09_13',3)"/>
+        </td>
+      </tr>
+    </table>
+
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+    <button id="buttonReveal" onclick="reveal('q10')" > Q10 </button>
+    <h1 class="question" id="q10"> Quiz #10 : Quels sont les Mangas ayant obtenu les plus grosses ventes entre le 23/05/15 et le 22/05/16 ?<br />
+Quiz #10 : Which manga title got most sold between 23/05/15 and 22/05/16?</h1>
+    <table id="tableau">
+      <tr>
+        <td>
+          <img src="image10.png" id="img10_01" name="image10" onclick="image('image10','10_01',19)"/>
+        </td>
+        <td>
+          <img src="image10.png" id="img10_02" name="image10" onclick="image('image10','10_02',13)"/>
+        </td>
+        <td>
+          <img src="image10.png" id="img10_03" name="image10" onclick="image('image10','10_03',13)"/>
+        </td>
+        <td>
+          <img src="image10.png" id="img10_04" name="image10" onclick="image('image10','10_04',12)"/>
+        </td>
+        <td>
+          <img src="image10.png" id="img10_05" name="image10" onclick="image('image10','10_05',10)"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <img src="image10.png" id="img10_06" name="image10" onclick="image('image10','10_06',8)"/>
+        </td>
+        <td>
+          <img src="image10.png" id="img10_07" name="image10" onclick="image('image10','10_07',7)"/>
+        </td>
+        <td>
+          <img src="image10.png" id="img10_08" name="image10" onclick="image('image10','10_08',7)"/>
+        </td>
+        <td>
+          <img src="image10.png" id="img10_09" name="image10" onclick="image('image10','10_09',6)"/>
+        </td>
+        <td>
+          <img src="image10.png" id="img10_10" name="image10" onclick="image('image10','10_10',5)"/>
+        </td>
+      </tr>
+    </table>
+</body>
